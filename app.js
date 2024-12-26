@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true}))
 // Email endpoint 
 app.post("/send-email", (req, res) => {
     // const { name, email, message, orderDetails } = req.body
-    const { name, email, number, secondNumber, yourState, deliveryAddress } = req.body
+    const { name, email, number, secondNumber, yourState, deliveryAddress, quantity } = req.body
     
     // console.log(name, email, message, orderDetails)
     
@@ -41,7 +41,7 @@ app.post("/send-email", (req, res) => {
         to: "ridwanabiola2000@gmail.com",
         subject: `New Order from ${name}`,
         // text: `You received a new order: \n\n${orderDetails}\n\nMessage: ${message}`
-        text: `You received a new order: \n\n${name}\n\nnumber: ${number}\n\nsecondNumber: ${secondNumber}\n\nyourState: ${yourState}\n\ndeliveryAddress: ${deliveryAddress}`
+        text: `You received a new order: \n\nname: ${name}\n\nnumber: ${number}\n\nsecondNumber: ${secondNumber}\n\nyourState: ${yourState}\n\ndeliveryAddress: ${deliveryAddress}\n\nquantity: ${quantity}`
         
     }
 
