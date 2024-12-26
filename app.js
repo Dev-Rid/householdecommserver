@@ -20,7 +20,9 @@ app.use(bodyParser.urlencoded({ extended: true}))
 
 // Email endpoint 
 app.post("/send-email", (req, res) => {
-    const { name, email, message, orderDetails } = req.body
+    // const { name, email, message, orderDetails } = req.body
+    const { name, email, number, secondNumber, yourState, deliveryAddress } = req.body
+    
     // console.log(name, email, message, orderDetails)
     
     // configure nodemailer (SMTP configuration)
@@ -38,8 +40,11 @@ app.post("/send-email", (req, res) => {
         from: email,
         to: "ridwanabiola2000@gmail.com",
         subject: `New Order from ${name}`,
-        text: `You received a new order: \n\n${orderDetails}\n\nMessage: ${message}`
+        // text: `You received a new order: \n\n${orderDetails}\n\nMessage: ${message}`
+        text: `You received a new order: \n\n${name}\n\nnumber: ${number}\n\nsecondNumber: ${secondNumber}\n\nyourState: ${yourState}\n\ndeliveryAddress: ${deliveryAddress}`
+        
     }
+
 
     
     // testing my connection
