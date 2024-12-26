@@ -3,7 +3,14 @@ const app = express()
 
 const bodyParser = require("body-parser")
 const nodemailer = require("nodemailer")
+const cors = require("cors")
+
+// middlewares
+app.use(cors())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true}))
 // console.log(bodyParser, nodemailer)
+
 
 
 
