@@ -21,9 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true}))
 // Email endpoint 
 app.post("/send-email", (req, res) => {
     // const { name, email, message, orderDetails } = req.body
-    const { name, email, number, secondNumber, yourState, deliveryAddress, quantity } = req.body
-    
-    // console.log(name, email, message, orderDetails)
+    const { name, email, phoneNumber, secondNumber, yourState, deliveryAddress, quantity } = req.body
+    console.log("Request Body:", req.body);
     
     // configure nodemailer (SMTP configuration)
     const transporter = nodemailer.createTransport({
@@ -37,11 +36,11 @@ app.post("/send-email", (req, res) => {
 
     // Email option
     const mailOptions = {
-        from: email,
+        from: email,                                                                                                                                                
         to: "ridwanabiola2000@gmail.com",
         subject: `New Order from ${name}`,
         // text: `You received a new order: \n\n${orderDetails}\n\nMessage: ${message}`
-        text: `You received a new order: \n\nname: ${name}\n\nnumber: ${number}\n\nsecondNumber: ${secondNumber}\n\nyourState: ${yourState}\n\ndeliveryAddress: ${deliveryAddress}\n\nquantity: ${quantity}`
+        text: `You received a new order from: ${name}\n\nname: ${name}\n\nphoneNumber: ${phoneNumber}\n\nsecondNumber: ${secondNumber}\n\nyourState: ${yourState}\n\ndeliveryAddress: ${deliveryAddress}\n\nquantity: ${quantity}`
         
     }
 
@@ -59,7 +58,9 @@ app.post("/send-email", (req, res) => {
     try{
         // send Email
         transporter.sendMail(mailOptions)
-        res.status(200).send("Order Email sent successfully!")
+        res.status(200).json({ success: true, message: "Order Email sent successfully!" })
+
+        // res.status(200).send("Order Email sent successfully!")
     } catch (error) {
         console.log("Error sending email:", error)
         res.status(500).send("Failed to send email. Please try again later.")
