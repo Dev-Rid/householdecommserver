@@ -6,6 +6,8 @@ const nodemailer = require("nodemailer")
 const cors = require("cors")
 require("dotenv").config()
 
+const path = require("path")
+
 // console.log(process.env.EMAIL_USER, process.env.EMAIL_PASS)
 
 // my app port
@@ -16,9 +18,18 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true}))
 // console.log(bodyParser, nodemailer)
+app.use(express.static(path.join(__dirname, "build")))
 
 
-// Email endpoint 
+
+// || Serve Static Files ||
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"))
+})
+
+
+
+// || Email endpoint || 
 app.post("/send-email", (req, res) => {
     // const { name, email, message, orderDetails } = req.body
     const { name, email, phoneNumber, secondNumber, yourState, deliveryAddress, quantity } = req.body
