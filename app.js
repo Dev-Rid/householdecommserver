@@ -11,7 +11,7 @@ const path = require("path")
 // console.log(process.env.EMAIL_USER, pnorocess.env.EMAIL_PASS)
 
 // my app port
-const port = 3005
+const port = 3007
 
 // middlewares
 app.use(cors())
