@@ -8,7 +8,7 @@ require("dotenv").config()
 
 const path = require("path")
 
-// console.log(process.env.EMAIL_USER, process.env.EMAIL_PASS)
+// console.log(process.env.EMAIL_USER, pnorocess.env.EMAIL_PASS)
 
 // my app port
 const port = 3002
