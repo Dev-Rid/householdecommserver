@@ -80,6 +80,10 @@ app.post("/send-email", (req, res) => {
 })
 
 
-app.listen(port, "localhost", () =>{
+
+app.listen(port, '0.0.0.0', () =>{
     console.log("server is listening to port " + port)
 })
+// app.listen(port, "localhost", () =>{
+//     console.log("server is listening to port " + port)
+// })
