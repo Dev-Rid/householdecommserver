@@ -14,7 +14,9 @@ const path = require("path")
 const port = 3007
 
 // middlewares
-app.use(cors())
+app.use(cors({
+    origin: 'myecommercesiteabiola.netlify.app'
+}))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true}))
 // console.log(bodyParser, nodemailer)
